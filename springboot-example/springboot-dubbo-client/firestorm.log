@@ -1,0 +1,349 @@
+INFO main org.apache.dubbo.common.logger.LoggerFactory - using logger: org.apache.dubbo.common.logger.log4j.Log4jLoggerAdapter
+INFO main org.apache.dubbo.config.spring.beans.factory.annotation.ServiceAnnotationBeanPostProcessor -  [DUBBO] BeanNameGenerator bean can't be found in BeanFactory with name [org.springframework.context.annotation.internalConfigurationBeanNameGenerator], dubbo version: 2.7.2, current host: 192.168.6.19
+INFO main org.apache.dubbo.config.spring.beans.factory.annotation.ServiceAnnotationBeanPostProcessor -  [DUBBO] BeanNameGenerator will be a instance of org.springframework.context.annotation.AnnotationBeanNameGenerator , it maybe a potential problem on bean name generation., dubbo version: 2.7.2, current host: 192.168.6.19
+WARN main org.apache.dubbo.config.spring.beans.factory.annotation.ServiceAnnotationBeanPostProcessor -  [DUBBO] No Spring Bean annotating Dubbo's @Service was found under package[com.springboot.dubbo], dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.rpc;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class Protocol$Adaptive implements org.apache.dubbo.rpc.Protocol {
+public void destroy()  {
+throw new UnsupportedOperationException("The method public abstract void org.apache.dubbo.rpc.Protocol.destroy() of interface org.apache.dubbo.rpc.Protocol is not adaptive method!");
+}
+public int getDefaultPort()  {
+throw new UnsupportedOperationException("The method public abstract int org.apache.dubbo.rpc.Protocol.getDefaultPort() of interface org.apache.dubbo.rpc.Protocol is not adaptive method!");
+}
+public org.apache.dubbo.rpc.Exporter export(org.apache.dubbo.rpc.Invoker arg0) throws org.apache.dubbo.rpc.RpcException {
+if (arg0 == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.Invoker argument getUrl() == null");
+org.apache.dubbo.common.URL url = arg0.getUrl();
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.rpc.Protocol) name from url (" + url.toString() + ") use keys([protocol])");
+org.apache.dubbo.rpc.Protocol extension = (org.apache.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(org.apache.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.export(arg0);
+}
+public org.apache.dubbo.rpc.Invoker refer(java.lang.Class arg0, org.apache.dubbo.common.URL arg1) throws org.apache.dubbo.rpc.RpcException {
+if (arg1 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg1;
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.rpc.Protocol) name from url (" + url.toString() + ") use keys([protocol])");
+org.apache.dubbo.rpc.Protocol extension = (org.apache.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(org.apache.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.refer(arg0, arg1);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.rpc.cluster;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class Cluster$Adaptive implements org.apache.dubbo.rpc.cluster.Cluster {
+public org.apache.dubbo.rpc.Invoker join(org.apache.dubbo.rpc.cluster.Directory arg0) throws org.apache.dubbo.rpc.RpcException {
+if (arg0 == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.cluster.Directory argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.cluster.Directory argument getUrl() == null");
+org.apache.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("cluster", "failover");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.rpc.cluster.Cluster) name from url (" + url.toString() + ") use keys([cluster])");
+org.apache.dubbo.rpc.cluster.Cluster extension = (org.apache.dubbo.rpc.cluster.Cluster)ExtensionLoader.getExtensionLoader(org.apache.dubbo.rpc.cluster.Cluster.class).getExtension(extName);
+return extension.join(arg0);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.rpc;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class ProxyFactory$Adaptive implements org.apache.dubbo.rpc.ProxyFactory {
+public java.lang.Object getProxy(org.apache.dubbo.rpc.Invoker arg0) throws org.apache.dubbo.rpc.RpcException {
+if (arg0 == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.Invoker argument getUrl() == null");
+org.apache.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.rpc.ProxyFactory) name from url (" + url.toString() + ") use keys([proxy])");
+org.apache.dubbo.rpc.ProxyFactory extension = (org.apache.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(org.apache.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getProxy(arg0);
+}
+public java.lang.Object getProxy(org.apache.dubbo.rpc.Invoker arg0, boolean arg1) throws org.apache.dubbo.rpc.RpcException {
+if (arg0 == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.Invoker argument getUrl() == null");
+org.apache.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.rpc.ProxyFactory) name from url (" + url.toString() + ") use keys([proxy])");
+org.apache.dubbo.rpc.ProxyFactory extension = (org.apache.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(org.apache.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getProxy(arg0, arg1);
+}
+public org.apache.dubbo.rpc.Invoker getInvoker(java.lang.Object arg0, java.lang.Class arg1, org.apache.dubbo.common.URL arg2) throws org.apache.dubbo.rpc.RpcException {
+if (arg2 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg2;
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.rpc.ProxyFactory) name from url (" + url.toString() + ") use keys([proxy])");
+org.apache.dubbo.rpc.ProxyFactory extension = (org.apache.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(org.apache.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getInvoker(arg0, arg1, arg2);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+WARN main org.apache.dubbo.config.AbstractConfig -  [DUBBO] There's no valid metadata config found, if you are using the simplified mode of registry url, please make sure you have a metadata address configured properly., dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.remoting;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class Transporter$Adaptive implements org.apache.dubbo.remoting.Transporter {
+public org.apache.dubbo.remoting.Server bind(org.apache.dubbo.common.URL arg0, org.apache.dubbo.remoting.ChannelHandler arg1) throws org.apache.dubbo.remoting.RemotingException {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg0;
+String extName = url.getParameter("server", url.getParameter("transporter", "netty"));
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.remoting.Transporter) name from url (" + url.toString() + ") use keys([server, transporter])");
+org.apache.dubbo.remoting.Transporter extension = (org.apache.dubbo.remoting.Transporter)ExtensionLoader.getExtensionLoader(org.apache.dubbo.remoting.Transporter.class).getExtension(extName);
+return extension.bind(arg0, arg1);
+}
+public org.apache.dubbo.remoting.Client connect(org.apache.dubbo.common.URL arg0, org.apache.dubbo.remoting.ChannelHandler arg1) throws org.apache.dubbo.remoting.RemotingException {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg0;
+String extName = url.getParameter("client", url.getParameter("transporter", "netty"));
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.remoting.Transporter) name from url (" + url.toString() + ") use keys([client, transporter])");
+org.apache.dubbo.remoting.Transporter extension = (org.apache.dubbo.remoting.Transporter)ExtensionLoader.getExtensionLoader(org.apache.dubbo.remoting.Transporter.class).getExtension(extName);
+return extension.connect(arg0, arg1);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.remoting;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class Dispatcher$Adaptive implements org.apache.dubbo.remoting.Dispatcher {
+public org.apache.dubbo.remoting.ChannelHandler dispatch(org.apache.dubbo.remoting.ChannelHandler arg0, org.apache.dubbo.common.URL arg1)  {
+if (arg1 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg1;
+String extName = url.getParameter("dispatcher", url.getParameter("dispather", url.getParameter("channel.handler", "all")));
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.remoting.Dispatcher) name from url (" + url.toString() + ") use keys([dispatcher, dispather, channel.handler])");
+org.apache.dubbo.remoting.Dispatcher extension = (org.apache.dubbo.remoting.Dispatcher)ExtensionLoader.getExtensionLoader(org.apache.dubbo.remoting.Dispatcher.class).getExtension(extName);
+return extension.dispatch(arg0, arg1);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.common.threadpool;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class ThreadPool$Adaptive implements org.apache.dubbo.common.threadpool.ThreadPool {
+public java.util.concurrent.Executor getExecutor(org.apache.dubbo.common.URL arg0)  {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg0;
+String extName = url.getParameter("threadpool", "fixed");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.common.threadpool.ThreadPool) name from url (" + url.toString() + ") use keys([threadpool])");
+org.apache.dubbo.common.threadpool.ThreadPool extension = (org.apache.dubbo.common.threadpool.ThreadPool)ExtensionLoader.getExtensionLoader(org.apache.dubbo.common.threadpool.ThreadPool.class).getExtension(extName);
+return extension.getExecutor(arg0);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+INFO main org.apache.dubbo.remoting.transport.AbstractClient -  [DUBBO] Succeed connect to server /192.168.6.19:20880 from NettyClient 192.168.6.19 using dubbo version 2.7.2, channel is NettyChannel [channel=[id: 0xaa54c30a, L:/192.168.6.19:55009 - R:/192.168.6.19:20880]], dubbo version: 2.7.2, current host: 192.168.6.19
+INFO main org.apache.dubbo.remoting.transport.AbstractClient -  [DUBBO] Start NettyClient java-wenlucheng/192.168.6.19 connect to the server /192.168.6.19:20880, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.cache;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class CacheFactory$Adaptive implements org.apache.dubbo.cache.CacheFactory {
+public org.apache.dubbo.cache.Cache getCache(org.apache.dubbo.common.URL arg0, org.apache.dubbo.rpc.Invocation arg1)  {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg0;
+if (arg1 == null) throw new IllegalArgumentException("invocation == null"); String methodName = arg1.getMethodName();
+String extName = url.getMethodParameter(methodName, "cache", "lru");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.cache.CacheFactory) name from url (" + url.toString() + ") use keys([cache])");
+org.apache.dubbo.cache.CacheFactory extension = (org.apache.dubbo.cache.CacheFactory)ExtensionLoader.getExtensionLoader(org.apache.dubbo.cache.CacheFactory.class).getExtension(extName);
+return extension.getCache(arg0, arg1);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.monitor;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class MonitorFactory$Adaptive implements org.apache.dubbo.monitor.MonitorFactory {
+public org.apache.dubbo.monitor.Monitor getMonitor(org.apache.dubbo.common.URL arg0)  {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg0;
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.monitor.MonitorFactory) name from url (" + url.toString() + ") use keys([protocol])");
+org.apache.dubbo.monitor.MonitorFactory extension = (org.apache.dubbo.monitor.MonitorFactory)ExtensionLoader.getExtensionLoader(org.apache.dubbo.monitor.MonitorFactory.class).getExtension(extName);
+return extension.getMonitor(arg0);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.validation;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class Validation$Adaptive implements org.apache.dubbo.validation.Validation {
+public org.apache.dubbo.validation.Validator getValidator(org.apache.dubbo.common.URL arg0)  {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg0;
+String extName = url.getParameter("validation", "jvalidation");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.validation.Validation) name from url (" + url.toString() + ") use keys([validation])");
+org.apache.dubbo.validation.Validation extension = (org.apache.dubbo.validation.Validation)ExtensionLoader.getExtensionLoader(org.apache.dubbo.validation.Validation.class).getExtension(extName);
+return extension.getValidator(arg0);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+INFO main org.apache.dubbo.config.AbstractConfig -  [DUBBO] Refer dubbo service com.springboot.dubbo.BuyService from url dubbo://192.168.6.19:20880/com.springboot.dubbo.BuyService?application=springboot-dubbo-client&dubbo=2.0.2&interface=com.springboot.dubbo.BuyService&lazy=false&methods=buy&pid=14996&qos-enable=false&register.ip=192.168.6.19&revision=1.0-SNAPSHOT&side=consumer&sticky=false&timestamp=1576822481845, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG DubboClientHandler-192.168.6.19:20880-thread-1 org.apache.dubbo.remoting.transport.DecodeHandler -  [DUBBO] Decode decodeable message org.apache.dubbo.rpc.protocol.dubbo.DecodeableRpcResult, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG DubboClientHandler-192.168.6.19:20880-thread-1 org.apache.dubbo.rpc.protocol.dubbo.DubboProtocol -  [DUBBO] disconnected from /192.168.6.19:20880,url:dubbo://192.168.6.19:20880/com.springboot.dubbo.BuyService?application=springboot-dubbo-client&codec=dubbo&dubbo=2.0.2&heartbeat=60000&interface=com.springboot.dubbo.BuyService&lazy=false&methods=buy&pid=14996&qos-enable=false&register.ip=192.168.6.19&revision=1.0-SNAPSHOT&side=consumer&sticky=false&timestamp=1576822481845, dubbo version: 2.7.2, current host: 192.168.6.19
+INFO dubbo-client-idleCheck-thread-1 org.apache.dubbo.remoting.exchange.support.header.ReconnectTimerTask -  [DUBBO] Initial connection to HeaderExchangeClient [channel=org.apache.dubbo.remoting.transport.netty4.NettyClient [192.168.6.19:0 -> /192.168.6.19:20880]], dubbo version: 2.7.2, current host: 192.168.6.19
+ERROR dubbo-client-idleCheck-thread-1 org.apache.dubbo.remoting.exchange.support.header.ReconnectTimerTask -  [DUBBO] Fail to connect to HeaderExchangeClient [channel=org.apache.dubbo.remoting.transport.netty4.NettyClient [192.168.6.19:0 -> /192.168.6.19:20880]], dubbo version: 2.7.2, current host: 192.168.6.19
+org.apache.dubbo.remoting.RemotingException: client(url: dubbo://192.168.6.19:20880/com.springboot.dubbo.BuyService?application=springboot-dubbo-client&codec=dubbo&dubbo=2.0.2&heartbeat=60000&interface=com.springboot.dubbo.BuyService&lazy=false&methods=buy&pid=14996&qos-enable=false&register.ip=192.168.6.19&revision=1.0-SNAPSHOT&side=consumer&sticky=false&timestamp=1576822481845) failed to connect to server /192.168.6.19:20880, error message is:Connection refused: no further information: /192.168.6.19:20880
+	at org.apache.dubbo.remoting.transport.netty4.NettyClient.doConnect(NettyClient.java:147)
+	at org.apache.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:190)
+	at org.apache.dubbo.remoting.transport.AbstractClient.reconnect(AbstractClient.java:246)
+	at org.apache.dubbo.remoting.exchange.support.header.HeaderExchangeClient.reconnect(HeaderExchangeClient.java:155)
+	at org.apache.dubbo.remoting.exchange.support.header.ReconnectTimerTask.doTask(ReconnectTimerTask.java:49)
+	at org.apache.dubbo.remoting.exchange.support.header.AbstractTimerTask.run(AbstractTimerTask.java:87)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:648)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:727)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$Worker.run(HashedWheelTimer.java:449)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: /192.168.6.19:20880
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:330)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:688)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:635)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:514)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$6.run(SingleThreadEventExecutor.java:1050)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+INFO main org.apache.dubbo.common.logger.LoggerFactory - using logger: org.apache.dubbo.common.logger.log4j.Log4jLoggerAdapter
+INFO main org.apache.dubbo.config.spring.beans.factory.annotation.ServiceAnnotationBeanPostProcessor -  [DUBBO] BeanNameGenerator bean can't be found in BeanFactory with name [org.springframework.context.annotation.internalConfigurationBeanNameGenerator], dubbo version: 2.7.2, current host: 192.168.6.19
+INFO main org.apache.dubbo.config.spring.beans.factory.annotation.ServiceAnnotationBeanPostProcessor -  [DUBBO] BeanNameGenerator will be a instance of org.springframework.context.annotation.AnnotationBeanNameGenerator , it maybe a potential problem on bean name generation., dubbo version: 2.7.2, current host: 192.168.6.19
+WARN main org.apache.dubbo.config.spring.beans.factory.annotation.ServiceAnnotationBeanPostProcessor -  [DUBBO] No Spring Bean annotating Dubbo's @Service was found under package[com.springboot.dubbo], dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.rpc;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class Protocol$Adaptive implements org.apache.dubbo.rpc.Protocol {
+public void destroy()  {
+throw new UnsupportedOperationException("The method public abstract void org.apache.dubbo.rpc.Protocol.destroy() of interface org.apache.dubbo.rpc.Protocol is not adaptive method!");
+}
+public int getDefaultPort()  {
+throw new UnsupportedOperationException("The method public abstract int org.apache.dubbo.rpc.Protocol.getDefaultPort() of interface org.apache.dubbo.rpc.Protocol is not adaptive method!");
+}
+public org.apache.dubbo.rpc.Exporter export(org.apache.dubbo.rpc.Invoker arg0) throws org.apache.dubbo.rpc.RpcException {
+if (arg0 == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.Invoker argument getUrl() == null");
+org.apache.dubbo.common.URL url = arg0.getUrl();
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.rpc.Protocol) name from url (" + url.toString() + ") use keys([protocol])");
+org.apache.dubbo.rpc.Protocol extension = (org.apache.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(org.apache.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.export(arg0);
+}
+public org.apache.dubbo.rpc.Invoker refer(java.lang.Class arg0, org.apache.dubbo.common.URL arg1) throws org.apache.dubbo.rpc.RpcException {
+if (arg1 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg1;
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.rpc.Protocol) name from url (" + url.toString() + ") use keys([protocol])");
+org.apache.dubbo.rpc.Protocol extension = (org.apache.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(org.apache.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.refer(arg0, arg1);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.rpc.cluster;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class Cluster$Adaptive implements org.apache.dubbo.rpc.cluster.Cluster {
+public org.apache.dubbo.rpc.Invoker join(org.apache.dubbo.rpc.cluster.Directory arg0) throws org.apache.dubbo.rpc.RpcException {
+if (arg0 == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.cluster.Directory argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.cluster.Directory argument getUrl() == null");
+org.apache.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("cluster", "failover");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.rpc.cluster.Cluster) name from url (" + url.toString() + ") use keys([cluster])");
+org.apache.dubbo.rpc.cluster.Cluster extension = (org.apache.dubbo.rpc.cluster.Cluster)ExtensionLoader.getExtensionLoader(org.apache.dubbo.rpc.cluster.Cluster.class).getExtension(extName);
+return extension.join(arg0);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.rpc;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class ProxyFactory$Adaptive implements org.apache.dubbo.rpc.ProxyFactory {
+public java.lang.Object getProxy(org.apache.dubbo.rpc.Invoker arg0) throws org.apache.dubbo.rpc.RpcException {
+if (arg0 == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.Invoker argument getUrl() == null");
+org.apache.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.rpc.ProxyFactory) name from url (" + url.toString() + ") use keys([proxy])");
+org.apache.dubbo.rpc.ProxyFactory extension = (org.apache.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(org.apache.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getProxy(arg0);
+}
+public java.lang.Object getProxy(org.apache.dubbo.rpc.Invoker arg0, boolean arg1) throws org.apache.dubbo.rpc.RpcException {
+if (arg0 == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("org.apache.dubbo.rpc.Invoker argument getUrl() == null");
+org.apache.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.rpc.ProxyFactory) name from url (" + url.toString() + ") use keys([proxy])");
+org.apache.dubbo.rpc.ProxyFactory extension = (org.apache.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(org.apache.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getProxy(arg0, arg1);
+}
+public org.apache.dubbo.rpc.Invoker getInvoker(java.lang.Object arg0, java.lang.Class arg1, org.apache.dubbo.common.URL arg2) throws org.apache.dubbo.rpc.RpcException {
+if (arg2 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg2;
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.rpc.ProxyFactory) name from url (" + url.toString() + ") use keys([proxy])");
+org.apache.dubbo.rpc.ProxyFactory extension = (org.apache.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(org.apache.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getInvoker(arg0, arg1, arg2);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+WARN main org.apache.dubbo.config.AbstractConfig -  [DUBBO] There's no valid metadata config found, if you are using the simplified mode of registry url, please make sure you have a metadata address configured properly., dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.remoting;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class Transporter$Adaptive implements org.apache.dubbo.remoting.Transporter {
+public org.apache.dubbo.remoting.Client connect(org.apache.dubbo.common.URL arg0, org.apache.dubbo.remoting.ChannelHandler arg1) throws org.apache.dubbo.remoting.RemotingException {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg0;
+String extName = url.getParameter("client", url.getParameter("transporter", "netty"));
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.remoting.Transporter) name from url (" + url.toString() + ") use keys([client, transporter])");
+org.apache.dubbo.remoting.Transporter extension = (org.apache.dubbo.remoting.Transporter)ExtensionLoader.getExtensionLoader(org.apache.dubbo.remoting.Transporter.class).getExtension(extName);
+return extension.connect(arg0, arg1);
+}
+public org.apache.dubbo.remoting.Server bind(org.apache.dubbo.common.URL arg0, org.apache.dubbo.remoting.ChannelHandler arg1) throws org.apache.dubbo.remoting.RemotingException {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg0;
+String extName = url.getParameter("server", url.getParameter("transporter", "netty"));
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.remoting.Transporter) name from url (" + url.toString() + ") use keys([server, transporter])");
+org.apache.dubbo.remoting.Transporter extension = (org.apache.dubbo.remoting.Transporter)ExtensionLoader.getExtensionLoader(org.apache.dubbo.remoting.Transporter.class).getExtension(extName);
+return extension.bind(arg0, arg1);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.remoting;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class Dispatcher$Adaptive implements org.apache.dubbo.remoting.Dispatcher {
+public org.apache.dubbo.remoting.ChannelHandler dispatch(org.apache.dubbo.remoting.ChannelHandler arg0, org.apache.dubbo.common.URL arg1)  {
+if (arg1 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg1;
+String extName = url.getParameter("dispatcher", url.getParameter("dispather", url.getParameter("channel.handler", "all")));
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.remoting.Dispatcher) name from url (" + url.toString() + ") use keys([dispatcher, dispather, channel.handler])");
+org.apache.dubbo.remoting.Dispatcher extension = (org.apache.dubbo.remoting.Dispatcher)ExtensionLoader.getExtensionLoader(org.apache.dubbo.remoting.Dispatcher.class).getExtension(extName);
+return extension.dispatch(arg0, arg1);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.common.threadpool;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class ThreadPool$Adaptive implements org.apache.dubbo.common.threadpool.ThreadPool {
+public java.util.concurrent.Executor getExecutor(org.apache.dubbo.common.URL arg0)  {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg0;
+String extName = url.getParameter("threadpool", "fixed");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.common.threadpool.ThreadPool) name from url (" + url.toString() + ") use keys([threadpool])");
+org.apache.dubbo.common.threadpool.ThreadPool extension = (org.apache.dubbo.common.threadpool.ThreadPool)ExtensionLoader.getExtensionLoader(org.apache.dubbo.common.threadpool.ThreadPool.class).getExtension(extName);
+return extension.getExecutor(arg0);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+INFO main org.apache.dubbo.remoting.transport.AbstractClient -  [DUBBO] Succeed connect to server /192.168.6.19:20880 from NettyClient 192.168.6.19 using dubbo version 2.7.2, channel is NettyChannel [channel=[id: 0x51dbff2f, L:/192.168.6.19:55111 - R:/192.168.6.19:20880]], dubbo version: 2.7.2, current host: 192.168.6.19
+INFO main org.apache.dubbo.remoting.transport.AbstractClient -  [DUBBO] Start NettyClient java-wenlucheng/192.168.6.19 connect to the server /192.168.6.19:20880, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.cache;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class CacheFactory$Adaptive implements org.apache.dubbo.cache.CacheFactory {
+public org.apache.dubbo.cache.Cache getCache(org.apache.dubbo.common.URL arg0, org.apache.dubbo.rpc.Invocation arg1)  {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg0;
+if (arg1 == null) throw new IllegalArgumentException("invocation == null"); String methodName = arg1.getMethodName();
+String extName = url.getMethodParameter(methodName, "cache", "lru");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.cache.CacheFactory) name from url (" + url.toString() + ") use keys([cache])");
+org.apache.dubbo.cache.CacheFactory extension = (org.apache.dubbo.cache.CacheFactory)ExtensionLoader.getExtensionLoader(org.apache.dubbo.cache.CacheFactory.class).getExtension(extName);
+return extension.getCache(arg0, arg1);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.monitor;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class MonitorFactory$Adaptive implements org.apache.dubbo.monitor.MonitorFactory {
+public org.apache.dubbo.monitor.Monitor getMonitor(org.apache.dubbo.common.URL arg0)  {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg0;
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.monitor.MonitorFactory) name from url (" + url.toString() + ") use keys([protocol])");
+org.apache.dubbo.monitor.MonitorFactory extension = (org.apache.dubbo.monitor.MonitorFactory)ExtensionLoader.getExtensionLoader(org.apache.dubbo.monitor.MonitorFactory.class).getExtension(extName);
+return extension.getMonitor(arg0);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG main org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator -  [DUBBO] package org.apache.dubbo.validation;
+import org.apache.dubbo.common.extension.ExtensionLoader;
+public class Validation$Adaptive implements org.apache.dubbo.validation.Validation {
+public org.apache.dubbo.validation.Validator getValidator(org.apache.dubbo.common.URL arg0)  {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+org.apache.dubbo.common.URL url = arg0;
+String extName = url.getParameter("validation", "jvalidation");
+if(extName == null) throw new IllegalStateException("Failed to get extension (org.apache.dubbo.validation.Validation) name from url (" + url.toString() + ") use keys([validation])");
+org.apache.dubbo.validation.Validation extension = (org.apache.dubbo.validation.Validation)ExtensionLoader.getExtensionLoader(org.apache.dubbo.validation.Validation.class).getExtension(extName);
+return extension.getValidator(arg0);
+}
+}, dubbo version: 2.7.2, current host: 192.168.6.19
+INFO main org.apache.dubbo.config.AbstractConfig -  [DUBBO] Refer dubbo service com.springboot.dubbo.BuyService from url dubbo://192.168.6.19:20880/com.springboot.dubbo.BuyService?application=springboot-dubbo-client&dubbo=2.0.2&interface=com.springboot.dubbo.BuyService&lazy=false&methods=buy&pid=15136&qos-enable=false&register.ip=192.168.6.19&revision=1.0-SNAPSHOT&side=consumer&sticky=false&timestamp=1576822630969, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG DubboClientHandler-192.168.6.19:20880-thread-1 org.apache.dubbo.remoting.transport.DecodeHandler -  [DUBBO] Decode decodeable message org.apache.dubbo.rpc.protocol.dubbo.DecodeableRpcResult, dubbo version: 2.7.2, current host: 192.168.6.19
+DEBUG DubboClientHandler-192.168.6.19:20880-thread-1 org.apache.dubbo.remoting.transport.DecodeHandler -  [DUBBO] Decode decodeable message org.apache.dubbo.rpc.protocol.dubbo.DecodeableRpcResult, dubbo version: 2.7.2, current host: 192.168.6.19
